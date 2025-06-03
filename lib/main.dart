@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project/screen/app_screen.dart';
 import 'package:project/screen/home_screen.dart';
 
 import 'bloc/bloc.dart';
 import 'data/network/doi.dart';
+import 'data/network/service_locator.dart';
 import 'data/repositorys/user_repository.dart';
 
-void main() {
+void main() async {
   final dioClient = DioClient();
   final userRepository = UserRepository(dioClient: dioClient);
-
-  runApp(MyApp(userRepository: userRepository));
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
+  // runApp(MyApp(userRepository: userRepository));
+  runApp( ShopApp());
 }
 
 class MyApp extends StatelessWidget {
