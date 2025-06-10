@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project/screen/app_screen.dart';
-import 'package:project/screen/home_screen.dart';
 
-import 'bloc/bloc.dart';
-import 'data/network/doi.dart';
-import 'data/network/service_locator.dart';
-import 'data/repositorys/user_repository.dart';
+import 'core/services/dependency_injection_instance.dart';
+import 'features/main/presentation/screens/main_screen.dart';
+import 'features/main/view/pages/main_page.dart';
 
-void main() async {
-  final dioClient = DioClient();
-  final userRepository = UserRepository(dioClient: dioClient);
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
-  // runApp(MyApp(userRepository: userRepository));
-  runApp( ShopApp());
+  await serviceLocator();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final UserRepository userRepository;
-
-  const MyApp({super.key, required this.userRepository});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocProvider(
-        create: (_) => UserBloc(userRepository),
-        child: HomeScreen(),
-      ),
+    return  MaterialApp(
+      title: 'Elaro',
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
     );
   }
 }
