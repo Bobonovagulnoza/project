@@ -8,7 +8,7 @@ class HiveLocalServices {
     await Hive.initFlutter();
     await Hive.openBox("Elaro");
     hive = Hive.box("Elaro");
-    print("hive passed success");
+
   }
 
   static Future<void> insertData(Map<String, dynamic> json) async{
