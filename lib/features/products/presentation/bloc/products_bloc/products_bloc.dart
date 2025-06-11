@@ -42,4 +42,5 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ) async {
     final request = await impl.fetchNewProducts();
   }
+
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'core/services/dependency_injection_instance.dart';
-import 'features/main/presentation/screens/main_screen.dart';
 import 'features/main/view/pages/main_page.dart';
 
 void main() async{
